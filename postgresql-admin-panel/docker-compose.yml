@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgre-admin:
+    container_name: postgre-admin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=email@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=SetUpPassword
+    ports: 
+      - 5050:80
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    networks:
+      - app
+
+networks:
+  app:
+    external: true
+
+volumes:
+  pgadmin:
